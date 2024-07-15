@@ -3,27 +3,26 @@ package input;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileDataReader implements DataReader<Integer> {
+public class FileDataReader implements DataReader {
     private String filePath;
 
     public FileDataReader(String filePath) {
         this.filePath = filePath;
     }
 
-    public static void validateFilePath(String filePath) throws FileNotFoundException {
+    public static void validateFilePath(String filePath) {
         File file = new File(filePath);
         if (!file.exists() || !file.isFile()) {
-            throw new FileNotFoundException("Файл не найден: " + filePath);
+            throw new RuntimeException("Файл не найден: " + filePath);
         }
     }
 
     @Override
-    public Integer[] getData(int length) throws FileNotFoundException {
+    public int[] getData(int length) {
         validateFilePath(filePath);
         List<Integer> numbers = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -46,6 +45,10 @@ public class FileDataReader implements DataReader<Integer> {
             throw new RuntimeException("В файле не найдено чисел.");
         }
 
-        return numbers.toArray(new Integer[0]);
+        int[] array = new int[numbers.size()];
+        for (int i = 0; i < numbers.size(); i++) {
+            array[i] = numbers.get(i);
+        }
+        return array;
     }
 }
