@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ManualDataReader implements DataReader<Integer> {
+public class ManualDataReader implements DataReader {
 
     @Override
-    public Integer[] getData(int length) {
+    public int[] getData(int length) {
         Scanner scanner = new Scanner(System.in);
         List<Integer> data = new ArrayList<>();
         System.out.println("Введите числа (введите 'end' для завершения):");
@@ -28,6 +28,10 @@ public class ManualDataReader implements DataReader<Integer> {
             }
         }
 
-        return data.toArray(new Integer[0]);
+        int[] array = new int[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            array[i] = data.get(i);
+        }
+        return array;
     }
 }

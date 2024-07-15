@@ -1,15 +1,13 @@
 package input;
 
-import java.io.FileNotFoundException;
+public class DataInput {
+    private DataReader reader;
 
-public class DataInput<T extends Number> {
-    private DataReader<T> reader;
-
-    public DataInput(DataReader<T> reader) {
+    public DataInput(DataReader reader) {
         this.reader = reader;
     }
 
-    public T[] getData(int length) throws FileNotFoundException {
+    public int[] getData(int length) {
         return reader.getData(length);
     }
 }
