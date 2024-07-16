@@ -1,17 +1,17 @@
 package sorting;
 
-public class SortContext<T extends Number & Comparable<T>> {
-    private SortStrategy<T> strategy;
+public class SortContext{
+    private SortStrategy strategy;
 
-    public void setStrategy(SortStrategy<T> strategy) {
+    public void setStrategy(SortStrategy strategy) {
         this.strategy = strategy;
     }
 
-    public SortStrategy<T> getStrategy() {
+    public SortStrategy getStrategy() {
         return strategy;
     }
 
-    public void executeStrategy(T[] array) {
+    public void executeStrategy(int[] array) {
         strategy.sort(array);
     }
 

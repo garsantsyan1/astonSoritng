@@ -1,8 +1,9 @@
 package sorting;
 
-public class TimSortStrategy<T extends Number & Comparable<T>> implements SortStrategy<T> {
+public class TimSortStrategy implements SortStrategy {
+
     @Override
-    public void sort(T[] array) {
-        // Реализация TimSort
+    public void sort(int[] array) {
+
     }
 }

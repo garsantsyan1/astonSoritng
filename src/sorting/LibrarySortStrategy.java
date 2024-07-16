@@ -3,9 +3,9 @@ package sorting;
 
 import java.util.Arrays;
 
-public class LibrarySortStrategy implements SortStrategy<Integer> {
+public class LibrarySortStrategy implements SortStrategy {
     @Override
-    public void sort(Integer[] array) {
+    public void sort(int[] array) {
         // LibrarySort
         int countSteps = 0;
         int arrSize = array.length;
