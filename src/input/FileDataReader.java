@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FileDataReader implements DataReader {
     private String filePath;
@@ -24,31 +22,33 @@ public class FileDataReader implements DataReader {
     @Override
     public int[] getData(int length) {
         validateFilePath(filePath);
-        List<Integer> numbers = new ArrayList<>();
+        int[] numbers = new int[length];
+        int count = 0;
+
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] tokens = line.split("[,\\s]+"); // Разделение по запятой и пробелам
+                String[] tokens = line.split("[,\\s]+");
                 for (String token : tokens) {
+                    if (count >= length) {
+                        throw new RuntimeException("В файле содержится больше чисел, чем ожидается: " + length);
+                    }
                     try {
-                        numbers.add(Integer.parseInt(token.trim()));
+                        numbers[count++] = Integer.parseInt(token.trim());
                     } catch (NumberFormatException e) {
-                        System.out.println("Неверное число: " + token + ". Пожалуйста, убедитесь, что файл содержит только целые числа.");
+                        throw new RuntimeException("Файл содержит некорректное значение: " + token + " Введите путь к" +
+                                "файлу с целыми числами");
                     }
                 }
             }
         } catch (IOException e) {
-            System.out.println("Ошибка чтения файла: " + e.getMessage());
+            throw new RuntimeException("Ошибка чтения файла: " + e.getMessage());
         }
 
-        if (numbers.isEmpty()) {
-            throw new RuntimeException("В файле не найдено чисел.");
+        if (count != length) {
+            throw new RuntimeException("В файле содержится " + count + " чисел, но ожидается " + length);
         }
 
-        int[] array = new int[numbers.size()];
-        for (int i = 0; i < numbers.size(); i++) {
-            array[i] = numbers.get(i);
-        }
-        return array;
+        return numbers;
     }
 }
