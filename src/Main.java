@@ -130,6 +130,9 @@ public class Main {
                     break;
             }
 
+            System.out.println("Исходный массив: " + Arrays.toString(dataArray));
+
+            long startTime = System.nanoTime();
             switch (sortType) {
                 case 1:
                     sortContext.executeStrategy(dataArray);
@@ -141,14 +144,25 @@ public class Main {
                     CustomSort.sortEvenOdd(dataArray, sortContext.getStrategy(), false);
                     break;
             }
+            long endTime = System.nanoTime();
+            long nanoTime = endTime - startTime;
 
+            System.out.printf("Время выполнения сортировки: %d нс (%.2f мс)\n", nanoTime, (nanoTime / 1000000.0));
             System.out.println("Отсортированный массив: " + Arrays.toString(dataArray));
 
-            System.out.println("Хотите выйти? (да/нет)");
-            String exitOption = scanner.next();
-            if (exitOption.equalsIgnoreCase("да")) {
-                running = false;
+            while (true){
+                System.out.println("Хотите выйти? (да/нет)");
+                String exitOption = scanner.next();
+                if (exitOption.equalsIgnoreCase("да")) {
+                    running = false;
+                    break;
+                } else if (exitOption.equalsIgnoreCase("нет")){
+                    break;
+                } else {
+                    System.out.println(ANSI_RED + "Неверный ввод. Пожалуйста, напишите \"да\" или \"нет\"");
+                }
             }
+
         }
         scanner.close();
     }

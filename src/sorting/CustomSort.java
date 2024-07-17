@@ -7,20 +7,20 @@ public class CustomSort {
     public static void sortEvenOdd(int[] dataArray, SortStrategy strategy, boolean sortEven) {
         List<Integer> subList = new ArrayList<>();
 
-        // Извлечение четных или нечетных элементов
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         for (int num : dataArray) {
             if ((sortEven && num % 2 == 0) || (!sortEven && num % 2 != 0)) {
                 subList.add(num);
             }
         }
 
-        // Преобразование List в массив
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ List пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         int[] subArray = subList.stream().mapToInt(i -> i).toArray();
 
-        // Сортировка подмассива
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         strategy.sort(subArray);
 
-        // Вставка отсортированных элементов обратно в массив
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         int subIndex = 0;
         for (int i = 0; i < dataArray.length; i++) {
             if ((sortEven && dataArray[i] % 2 == 0) || (!sortEven && dataArray[i] % 2 != 0)) {
