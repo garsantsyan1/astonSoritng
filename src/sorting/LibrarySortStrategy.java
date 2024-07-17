@@ -4,10 +4,17 @@ package sorting;
 import java.util.Arrays;
 
 public class LibrarySortStrategy implements SortStrategy<Integer> {
+
     @Override
     public void sort(Integer[] array) {
         // LibrarySort
         int countSteps = 0;
+
+        if (array == null || array.length < 2){
+            System.out.printf("Количество перестановок: %d\n", countSteps);
+            return;
+        }
+
         int arrSize = array.length;
         int libSize = 1; // Размер библиотеки
         int indexCurrElement = 1; // Индекс текущего элемента
@@ -28,7 +35,7 @@ public class LibrarySortStrategy implements SortStrategy<Integer> {
 
             // Если нет пробела, вставить новый индекс
             if (numbered[insert]) {
-                int tempSize = 0; // Временный размер библиотеки, кот будет использоваться при перезагрузке
+                int tempSize = 0; // Временный размер библиотеки, кот. будет использоваться при перезагрузке
                 int nextTargetLib = targetLib == 0 ? 1 : 0; // Переключить целевую библотеку
 
                 // В цикле происходит перенос элементов из старых библиотек в новые библиотеки, а также запись
