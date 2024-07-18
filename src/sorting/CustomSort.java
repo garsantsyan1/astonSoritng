@@ -1,10 +1,11 @@
 package sorting;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CustomSort {
-    public static void sortEvenOdd(int[] dataArray, SortStrategy strategy, boolean sortEven) {
+    public static void sortEvenOdd(Integer[] dataArray, SortStrategy strategy, boolean sortEven) {
         List<Integer> subList = new ArrayList<>();
 
         // ���������� ������ ��� �������� ���������
@@ -15,7 +16,8 @@ public class CustomSort {
         }
 
         // �������������� List � ������
-        int[] subArray = subList.stream().mapToInt(i -> i).toArray();
+        int[] temp = subList.stream().mapToInt(i -> i).toArray();
+        Integer[] subArray = Arrays.stream(temp).boxed().toArray( Integer[]::new );
 
         // ���������� ����������
         strategy.sort(subArray);

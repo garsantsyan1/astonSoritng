@@ -20,9 +20,9 @@ public class FileDataReader implements DataReader {
     }
 
     @Override
-    public int[] getData(int length) {
+    public Integer[] getData(int length) {
         validateFilePath(filePath);
-        int[] numbers = new int[length];
+        Integer[] numbers = new Integer[length];
         int count = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

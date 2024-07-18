@@ -7,7 +7,7 @@ public class DataInput {
         this.reader = reader;
     }
 
-    public int[] getData(int length) {
+    public Integer[] getData(int length) {
         return reader.getData(length);
     }
 }

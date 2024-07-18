@@ -11,7 +11,7 @@ public class SortContext{
         return strategy;
     }
 
-    public void executeStrategy(int[] array) {
+    public void executeStrategy(Integer[] array) {
         strategy.sort(array);
     }
 

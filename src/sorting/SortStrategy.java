@@ -1,5 +1,5 @@
 package sorting;
 
-public interface SortStrategy {
-    void sort(int[] array);
+public interface SortStrategy <T extends Number> {
+    void sort(T[] array);
 }

@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class ManualDataReader implements DataReader {
 
     @Override
-    public int[] getData(int length) {
+    public Integer[] getData(int length) {
         Scanner scanner = new Scanner(System.in);
-        int[] array = new int[length];
+        Integer[] array = new Integer[length];
         int i = 0;
 
         while (i < length) {

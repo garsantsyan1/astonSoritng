@@ -67,7 +67,7 @@ public class Main {
                 }
             }
 
-            int[] dataArray = null;
+            Integer[] dataArray = null;
             switch (fillOption) {
                 case 1:
                     FileDataReader fileDataReader = new FileDataReader(fileName);
